@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  frontend:
+    name: Frontend build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install dependencies (frontend)
+        working-directory: frontend-nextjs
+        run: npm ci
+      - name: Build (frontend)
+        working-directory: frontend-nextjs
+        run: npm run build
+
+  backend:
+    name: Backend basic checks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v3
+        with:
+          php-version: '8.2'
+          tools: composer
+      - name: Install composer dependencies
+        working-directory: backend-symfony
+        run: composer install --no-interaction --no-progress --prefer-dist
+      - name: Composer validate
+        working-directory: backend-symfony
+        run: composer validate --no-interaction
