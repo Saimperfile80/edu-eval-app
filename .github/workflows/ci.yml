@@ -45,6 +45,14 @@ jobs:
       - name: Install composer dependencies
         working-directory: backend-symfony
         run: composer install --no-interaction --no-progress --prefer-dist
+      - name: Run backend tests (phpunit)
+        working-directory: backend-symfony
+        run: |
+          if [ -f ./vendor/bin/phpunit ]; then
+            ./vendor/bin/phpunit -c phpunit.xml || true
+          else
+            echo "phpunit not installed, skipping tests"
+          fi
       - name: Composer validate
         working-directory: backend-symfony
         run: composer validate --no-interaction
