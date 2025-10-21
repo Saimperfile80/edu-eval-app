@@ -68,7 +68,7 @@ class StudentController extends AbstractController
     {
         $student = $em->getRepository(User::class)->find($id);
         
-        if (!$student || $student->getRole() !== 'student') {
+        if (!$student || !in_array('ROLE_STUDENT', $student->getRoles(), true)) {
             return $this->json(['error' => 'Étudiant non trouvé'], 404);
         }
 
