@@ -38,3 +38,8 @@ Contribuer
 Licence
 - Ce projet est sous licence MIT (voir `LICENSE`).
 
+Architecture
+-----------
+Ce projet est composé d'un frontend Next.js (React + TypeScript) qui consomme une API Symfony située dans `backend-symfony/`. L'API expose des endpoints REST protégés par rôles (ex: `/api/teacher/*`) et utilise Doctrine pour la persistence. Le frontend utilise `NEXT_PUBLIC_API_BASE` pour pointer vers l'API et stocke un token JWT côté client pour l'authentification.
+
+
