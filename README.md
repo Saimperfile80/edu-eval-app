@@ -42,4 +42,16 @@ Architecture
 -----------
 Ce projet est composé d'un frontend Next.js (React + TypeScript) qui consomme une API Symfony située dans `backend-symfony/`. L'API expose des endpoints REST protégés par rôles (ex: `/api/teacher/*`) et utilise Doctrine pour la persistence. Le frontend utilise `NEXT_PUBLIC_API_BASE` pour pointer vers l'API et stocke un token JWT côté client pour l'authentification.
 
+Base de données
+---------------
+Si tu as un dump SQL (`database/evaluation_app.sql`), tu peux démarrer une instance Postgres + Adminer fournie et importer automatiquement le dump :
+
+```bash
+# Démarrer la base et Adminer
+./scripts/start-db.sh
+```
+
+Adminer sera disponible sur http://localhost:8080 (user: `eval_user`, pass: `eval_pass`, db: `evaluation_app`).
+
+
 
