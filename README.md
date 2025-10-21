@@ -53,5 +53,28 @@ Si tu as un dump SQL (`database/evaluation_app.sql`), tu peux démarrer une inst
 
 Adminer sera disponible sur http://localhost:8080 (user: `eval_user`, pass: `eval_pass`, db: `evaluation_app`).
 
+Importer une base MySQL (XAMPP)
+--------------------------------
+Si ta base est sur XAMPP (MySQL/MariaDB) et que tu veux utiliser ce dump ou remplacer la base actuelle :
+
+1. Faire un backup (si la base contient déjà des données importantes) via phpMyAdmin ou `mysqldump`.
+
+2. Importer le dump SQL localement (exemple) :
+
+```bash
+# import via script (utilise backend-symfony/.env.local si présent)
+./scripts/import-sql.sh path/to/your/dump.sql
+
+# ou importer manuellement via mysql client
+mysql -u root -p evaluation_app < path/to/dump.sql
+```
+
+3. Vérifier la connexion Symfony (depuis le dossier backend-symfony) :
+
+```bash
+composer install
+php bin/console doctrine:query:sql "SELECT 1"
+```
+
 
 
