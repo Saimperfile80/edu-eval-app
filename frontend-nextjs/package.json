@@ -2,11 +2,6 @@
   "name": "frontend-nextjs",
   "version": "0.1.0",
   "private": true,
-  "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build --turbopack",
-    "start": "next start"
-  },
   "dependencies": {
     "react": "19.1.0",
     "react-dom": "19.1.0",
@@ -24,13 +19,30 @@
     "eslint-plugin-react": "^7",
     "eslint-plugin-react-hooks": "^4",
     "prettier": "^2",
-    "eslint-config-prettier": "^9"
+    "eslint-config-prettier": "^9",
+    "vitest": "^1",
+    "@testing-library/react": "^14",
+    "@testing-library/jest-dom": "^6",
+    "husky": "^8",
+    "lint-staged": "^13"
   },
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
     "start": "next start",
     "lint": "next lint || eslint --ext .ts,.tsx .",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "test": "vitest run --coverage",
+    "test:watch": "vitest"
+  },
+  "lint-staged": {
+    "**/*.{ts,tsx,js,jsx,json,md}": [
+      "prettier --write"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   }
 }

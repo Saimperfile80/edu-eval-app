@@ -25,6 +25,9 @@ jobs:
       - name: Format check (frontend)
         working-directory: frontend-nextjs
         run: npx prettier --check .
+      - name: Run frontend tests
+        working-directory: frontend-nextjs
+        run: npm run test
       - name: Build (frontend)
         working-directory: frontend-nextjs
         run: npm run build
