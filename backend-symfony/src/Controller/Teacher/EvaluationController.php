@@ -39,29 +39,8 @@ class EvaluationController extends AbstractController
     #[Route('', methods: ['POST'])]
     public function create(Request $request, EntityManagerInterface $em): JsonResponse
     {
-        $data = json_decode($request->getContent(), true);
-        
-        $examTheme = new ExamTheme();
-        $examTheme->setTitle($data['title']);
-        $examTheme->setCategory($data['category']);
-        $examTheme->setDurationMinutes($data['duration_minutes']);
-        $examTheme->setQuestions($data['questions'] ?? []);
-        $examTheme->setStatus($data['status'] ?? 'draft');
-        $examTheme->setTeacher($this->getUser());
-        
-        if (isset($data['course_id'])) {
-            $course = $em->getRepository(Course::class)->find($data['course_id']);
-            $examTheme->setCourse($course);
-        }
-
-        $em->persist($examTheme);
-        $em->flush();
-
-        return $this->json([
-            'id' => $examTheme->getId(),
-            'title' => $examTheme->getTitle(),
-            'status' => $examTheme->getStatus()
-        ], 201);
+        // Reuse createEvaluation logic to avoid duplication
+        return $this->createEvaluation($request, $em);
     }
 
     #[Route('/{id}', methods: ['GET'])]
