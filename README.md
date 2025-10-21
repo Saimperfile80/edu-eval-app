@@ -6,6 +6,8 @@ Structure:
 - `backend-symfony/`: API Symfony
 - `frontend-nextjs/`: application Next.js
 
+![CI](https://github.com/Saimperfile80/edu-eval-app/actions/workflows/ci.yml/badge.svg)
+
 Quick start
 
 Prereqs:
