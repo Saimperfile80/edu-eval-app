@@ -19,6 +19,12 @@ jobs:
       - name: Install dependencies (frontend)
         working-directory: frontend-nextjs
         run: npm ci
+      - name: Lint (frontend)
+        working-directory: frontend-nextjs
+        run: npm run lint
+      - name: Format check (frontend)
+        working-directory: frontend-nextjs
+        run: npx prettier --check .
       - name: Build (frontend)
         working-directory: frontend-nextjs
         run: npm run build

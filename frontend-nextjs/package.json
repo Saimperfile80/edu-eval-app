@@ -18,6 +18,19 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@tailwindcss/postcss": "^4",
-    "tailwindcss": "^4"
+    "tailwindcss": "^4",
+    "eslint": "^8",
+    "eslint-config-next": "^15",
+    "eslint-plugin-react": "^7",
+    "eslint-plugin-react-hooks": "^4",
+    "prettier": "^2",
+    "eslint-config-prettier": "^9"
+  },
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build --turbopack",
+    "start": "next start",
+    "lint": "next lint || eslint --ext .ts,.tsx .",
+    "format": "prettier --write ."
   }
 }
