@@ -1,0 +1,39 @@
+### Node / Next.js
+node_modules/
+.next/
+.turbo/
+out/
+dist/
+build/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Env files
+.env
+.env.local
+.env.*.local
+
+# Mac / editor
+.DS_Store
+/.vscode/
+.idea/
+
+### Next / TypeScript
+*.tsbuildinfo
+.next/
+coverage/
+
+### Backend - PHP / Symfony
+/backend-symfony/vendor/
+/backend-symfony/var/
+/backend-symfony/.env.local
+/backend-symfony/.env
+
+### Database dumps / local
+*.sql
+
+### Misc
+logs/
+*.log
